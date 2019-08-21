@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/stylesheets/main.css">
+<h1><%= band.name %></h1>
+
+<ul>
+    <li>formed: <%= band.yr_formed %></li>
+    <li>disbanded: <%= band.yr_disbanded %></li>
+    <li>Country of origin: <%= band.country %></li>
+    <li>Genre: <%= band.genre %></li>
+    <% if(band.member_ids.length > 0){ %>
+    <li>Members</li>
+    <ul>
+        <% band.member_ids.forEach((member)=>{ %>
+        <li><%= member.fname %> <%= member.lname %><%= member.status === 'deceased' ? ' (D)' : '' %></li>
+        <% }); %>
+    </ul>
+    <% }; %>
+</ul>
+<a href="/artist/<%= band._id %>/musician/new">Add Musician</a>
+<a href="/artists">Back to Index</a>

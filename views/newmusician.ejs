@@ -1,0 +1,13 @@
+<h1><%= band.name %></h1>
+<h3>New Musician</h3>
+
+<form action="/artist/<%= band._id %>/musician" method="POST">
+    <input type="text" name="musician[fname]" placeholder="first name">
+    <input type="text" name="musician[lname]" placeholder="last name">
+    <select name="musician[status]">
+        <option value="not deceased" selected>not deceased</option>
+        <option value="deceased">deceased</option>
+    </select>
+    <button>Submit</button>
+</form>
+<a href="/artist/<%= band._id %>">Back</a>

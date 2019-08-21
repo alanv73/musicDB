@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/stylesheets/main.css">
+<h1>Artist Index</h1>
+
+
+<table>
+    <tr>
+        <th>Artist</th>
+        <th>Genre</th>
+        <th>Country</th>
+    </tr>
+    <% bands.forEach((band)=>{ %>
+    <tr>
+        <td><a href="/artist/<%= band._id %>"><%= band.name %></a></td>
+        <td><%= band.genre %></td>
+        <td><%= band.country %></td>
+    </tr>
+    <% }); %>
+</table>
