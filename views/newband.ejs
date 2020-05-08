@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/stylesheets/main.css">
+<h1>New Band</h1>
+
+<form action="/artist" method="POST">
+    <div>
+        <label for="band[name]">Band Name</label>
+        <input type="text" name="band[name]" placeholder="Band Name">
+    </div>
+    <div>
+        <label for="band[yr_formed]">Year Formed</label>
+        <input type="text" name="band[yr_formed]" placeholder="year formed">
+    </div>
+    <div>
+        <label for="band[yr_disbanded]">Year Disbanded</label>
+        <input type="text" name="band[yr_disbanded]" placeholder="year disbanded">
+    </div>
+    <div>
+        <label for="band[country]">Country of Origin</label>
+        <input type="text" name="band[country]" placeholder="country of origin">
+    </div>
+    <div>
+        <label for="band[genre]">Genre</label>
+        <input type="text" name="band[genre]" placeholder="genre">
+    </div>
+    <div>
+        <button>Submit</button>
+    </div>
+</form>
+<br><br>
+<a href="/artists">Back</a>

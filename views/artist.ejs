@@ -10,7 +10,9 @@
     <li>Members</li>
     <ul>
         <% band.member_ids.forEach((member)=>{ %>
-        <li><%= member.fname %> <%= member.lname %><%= member.status === 'deceased' ? ' (D)' : '' %></li>
+        <form action="/artist/<%= band._id %>/musician/<%= member._id %>?_method=DELETE" method="POST">
+        <li><%= member.fname %> <%= member.lname %><%= member.status === 'deceased' ? ' (D)' : '' %><span><input type="submit" class="del-button" value="X"></span></li>
+        </form>
         <% }); %>
     </ul>
     <% }; %>

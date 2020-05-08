@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/stylesheets/main.css">
-<h1>Artist Index</h1>
+<h1>Music Database</h1>
+<h3>Artist Index</h3>
 
 
 <table>
@@ -10,9 +11,13 @@
     </tr>
     <% bands.forEach((band)=>{ %>
     <tr>
-        <td><a href="/artist/<%= band._id %>"><%= band.name %></a></td>
+        <form action="/artist/<%= band._id %>?_method=DELETE" method="POST">
+        <td><a href="/artist/<%= band._id %>"><%= band.name %></a><span><input type="submit" class="del-button" value="X"></span></td>
+        </form>
         <td><%= band.genre %></td>
         <td><%= band.country %></td>
     </tr>
     <% }); %>
 </table>
+<br><br>
+<a href="/artist/new">Add Artist</a>

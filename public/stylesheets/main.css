@@ -1,0 +1,40 @@
+input[type="text"] {
+    margin-bottom: 1%;
+    margin-left: 10px;
+}
+
+input[type="submit"] {
+    margin-right: 10px;
+}
+
+td:hover span, li:hover span {
+    width: 30px;
+    opacity: 1.0;
+}
+
+span {
+    margin-left: 10px;
+    width: 0px;
+    display: inline-block;
+    transition: 0.2s linear;
+    opacity: 0;
+}
+
+form {
+    margin-bottom: 0;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+
+.musician-item {
+    display: inline-block;
+    width: 200px;
+}
+
+li:hover, td:hover {
+    cursor: default;
+}
