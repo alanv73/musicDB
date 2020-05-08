@@ -11,8 +11,7 @@ mongoose.set('useCreateIndex', true);
 mongoose.Promise = Promise;
 
 // mongoose.connect('mongodb://localhost/music');
-var url =
-	process.env.DATABASEURL;
+var url = process.env.DATABASEURL;
 mongoose.connect(url, { useUnifiedTopology: true });
 
 var bandMemberSchema = new mongoose.Schema({
