@@ -1,5 +1,11 @@
 .mongo-logo {
-    width: 350px;
+    width: 150px;
+    margin-left: 20px;
+    vertical-align: top;
+}
+
+h1 {
+    margin-top: 20px;
 }
 
 input[type="text"] {
