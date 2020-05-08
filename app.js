@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express'),
 	app = express(),
 	methodOverride = require('method-override'),
@@ -10,10 +11,9 @@ mongoose.set('useCreateIndex', true);
 mongoose.Promise = Promise;
 
 // mongoose.connect('mongodb://localhost/music');
-mongoose.connect(
-	'mongodb+srv://alanv73:mongodbn3sov@cluster0-qtqk3.mongodb.net/music?retryWrites=true&w=majority',
-	{ useUnifiedTopology: true }
-);
+var url =
+	process.env.DATABASEURL;
+mongoose.connect(url, { useUnifiedTopology: true });
 
 var bandMemberSchema = new mongoose.Schema({
 	fname: String,
