@@ -1,25 +1,34 @@
-<link rel="stylesheet" href="/stylesheets/main.css">
+<%- include("partials/header") %>
 
-
-<h1>Music Database<img class="mongo-logo" src="img/MongoDB_Logo_FullColorBlack_RGB-4td3yuxzjs.png" alt=""></h1>
-<h3>Artist Index</h3>
-
-
-<table>
-    <tr>
-        <th>Artist</th>
-        <th>Genre</th>
-        <th>Country</th>
-    </tr>
-    <% bands.forEach((band)=>{ %>
-    <tr>
-        <form action="/artist/<%= band._id %>?_method=DELETE" method="POST">
-        <td><a href="/artist/<%= band._id %>"><%= band.name %></a><span><input type="submit" class="del-button" value="X"></span></td>
-        </form>
-        <td><%= band.genre %></td>
-        <td><%= band.country %></td>
-    </tr>
-    <% }); %>
-</table>
-<br><br>
-<a href="/artist/new">Add Artist</a>
+<div class="container">
+    <img class="mongo-logo" src="img/MongoDB_Logo_FullColorBlack_RGB-4td3yuxzjs.png" alt="">
+    <h1>Music Database</h1>
+    <hr>
+    <a href="/artist/new" class="ml-2">Add New Artist</a>
+</div>
+<div class="container col-8 mx-auto">
+    <h3 class="text-center">Artist Index</h3>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Artist</th>
+                <th>Genre</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <% bands.forEach((band)=>{ %>
+        <tr>
+            <form action="/artist/<%= band._id %>?_method=DELETE" method="POST">
+                <td><span class="mr-3"><input class="btn btn-danger" type="submit" class="del-button" value="X"></span><a href="/artist/<%= band._id %>"><%= band.name %></a></td>
+            </form>
+            <td><%= band.genre %></td>
+            <td><%= band.country %></td>
+        </tr>
+        <% }); %>
+    </table>
+</div>
+<div class="container mb-5">
+        <hr>
+        <a href="/artist/new">Add New Artist</a>
+</div>
+<%- include("partials/footer") %>

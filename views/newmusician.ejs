@@ -1,13 +1,27 @@
-<h1><%= band.name %></h1>
-<h3>New Musician</h3>
+<%- include("partials/header") %>
+<div class="container">
+    <h1><%= band.name %></h1>
+    <div class="container col-8 mx-auto">
+        <h3>New Musician</h3>
+        <form action="/artist/<%= band._id %>/musician" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" name="musician[fname]" placeholder="first name" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="musician[lname]" placeholder="last name" required>
+            </div>
+            <div class="form-group">
+                <select name="musician[status]" class="form-control">
+                    <option value="not deceased" selected>not deceased</option>
+                    <option value="deceased">deceased</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+    <a href="/artist/<%= band._id %>">Back</a>
+</div>
 
-<form action="/artist/<%= band._id %>/musician" method="POST">
-    <input type="text" name="musician[fname]" placeholder="first name">
-    <input type="text" name="musician[lname]" placeholder="last name">
-    <select name="musician[status]">
-        <option value="not deceased" selected>not deceased</option>
-        <option value="deceased">deceased</option>
-    </select>
-    <button>Submit</button>
-</form>
-<a href="/artist/<%= band._id %>">Back</a>
+<%- include("partials/footer") %>
