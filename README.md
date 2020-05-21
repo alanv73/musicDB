@@ -8,6 +8,3 @@ Sample Node.js app that interfaces with MongoDB using Mongoose
 
 ![artist](https://alanv73.github.io/img/musicdb-artistpage.png)
 
-<hr>
-
-![add](https://alanv73.github.io/img/musicdb-addmusician.png)
