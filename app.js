@@ -3,6 +3,7 @@ const express = require('express'),
 	app = express(),
 	methodOverride = require('method-override'),
 	bodyParser = require('body-parser'),
+	router = express.Router(),
 	mongoose = require('mongoose');
 
 mongoose.set('useNewUrlParser', true);
@@ -119,6 +120,33 @@ app.get('/artist/:id', (req, res) => {
 		});
 });
 
+// Band EDIT ITEM route
+app.get('/artist/:id/edit', (req, res) => {
+	Band.findById(req.params.id)
+		.populate('member_ids')
+		.exec((err, foundBand) => {
+			if (err) {
+				console.log('Error: ', err);
+				res.redirect('/artists');
+			} else {
+				res.render('editband', {
+					band: foundBand
+				});
+			}
+		});
+});
+
+// Band UPDATE ITEM route
+app.put('/artist/:artist_id', (req, res) => {
+	Band.findByIdAndUpdate(req.params.artist_id, req.body.band)
+		.then((updatedArtist) => {
+			res.redirect(`/artist/${req.params.artist_id}`);
+		}).catch((err) => {
+			console.log('Error: ', err);
+			res.redirect(`/artists`);
+		});
+});
+
 // NEW MUSICIAN
 app.get('/artist/:id/musician/new', (req, res) => {
 	Band.findById(req.params.id)
@@ -168,6 +196,52 @@ app.delete('/artist/:artist_id/musician/:musician_id', (req, res) => {
 			}).catch((err) => {
 				res.redirect('back');
 			});
+		}).catch((err) => {
+			res.redirect('back');
+		});
+});
+
+// Musician EDIT ITEM route
+app.get('/artist/:id/musician/:musician_id/edit', (req, res) => {
+	BandMember.findById(req.params.musician_id)
+		.then((foundMusician) => {
+			Band.findById(req.params.id)
+				.then((foundBand) => {
+					res.render('editmusician', {
+						band: foundBand,
+						musician: foundMusician
+					});
+				}).catch((err) => {
+					console.log('Error: ', err);
+					res.redirect(`/artist/${req.params.id}`);
+				});
+	}).catch((err) => {
+		console.log('Error: ', err);
+		res.redirect(`/artist/${req.params.artist_id}`);
+	});
+});
+
+// Update MUSICIAN
+app.put('/artist/:artist_id/musician/:musician_id', (req, res) => {
+	console.log(res.body);
+	BandMember.findByIdAndUpdate(req.params.musician_id, req.body.musician)
+		.then(() => {
+			// Band.findById(req.params.artist_id).then(band => {
+			// 	let ary = band.member_ids;
+
+			// 	let idx = ary.indexOf(req.params.musician_id);
+			// 	if (idx != -1) {
+			// 		ary.splice(idx, 1);
+			// 	}
+
+			// 	band.member_ids = ary;
+			// 	band.save();
+			// 	res.redirect(`/artist/${req.params.artist_id}`);
+			// }).catch((err) => {
+			// 	res.redirect('back');
+			// });
+
+			res.redirect(`/artist/${req.params.artist_id}`);
 		}).catch((err) => {
 			res.redirect('back');
 		});

@@ -17,7 +17,7 @@ input[type="submit"] {
     margin-right: 10px;
 }
 
-td:hover span, li:hover span {
+li:hover span {
     opacity: 1.0;
 }
 
@@ -49,4 +49,13 @@ ul {
 
 .card-link {
     margin-top: 20px;
+}
+
+.edit-btn {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+li:hover .edit-btn {
+    opacity: 1;
 }
