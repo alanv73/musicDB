@@ -9,10 +9,10 @@
   "author": "Alan",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^2.3.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.7",
-    "express": "^4.17.1",
+    "express": "^5.2.1",
     "method-override": "^3.0.0",
     "mongoose": "^8.8.3",
     "s": "^1.0.0"
